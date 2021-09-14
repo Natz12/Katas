@@ -1,3 +1,16 @@
+'''
+Given an array of integers, find the one that appears an odd number of times.
+
+There will always be only one integer that appears an odd number of times.
+
+Examples
+[7] should return 7, because it occurs 1 time (which is odd).
+[0] should return 0, because it occurs 1 time (which is odd).
+[1,1,2] should return 2, because it occurs 1 time (which is odd).
+[0,1,0,1,0] should return 0, because it occurs 3 times (which is odd).
+[1,2,2,3,3,3,4,3,3,3,2,2,1] should return 4, because it appears 1 time (which is odd).
+'''
+
 
 # import test
 import unittest
@@ -12,15 +25,17 @@ def find_it(seq):
             break
     return odd
 
-# This solution was approximately O(n^2) as it transverses two lists.
+# '''This solution was approximately O(n^2) as it transverses two lists.
 
-# A suggested solution that will be O(n) is using the XOR operation
-#  ^	XOR	Sets each bit to 1 if only one of two bits is 1
-# x ^ x == 0 for any pair of occurrences of x
-# x ^ x ^ x == x for any odd occurrences of x
-# As the xor operation is both comutative and associative, so the order of the numbers/operations doesn't matter.
+'''A suggested solution that will be O(n) is using the XOR operation
+ ^	XOR	Sets each bit to 1 if only one of two bits is 1
+x ^ x == 0 for any pair of occurrences of x
+x ^ x ^ x == x for any odd occurrences of x
+As the xor operation is both comutative and associative, so the order of the 
+numbers/operations doesn't matter.
 
-# Thus, every number that appear in pairs are set to zero and the single number with odd occurrences remains with its bits set.
+Thus, every number that appear in pairs are set to zero and the single number 
+with odd occurrences remains with its bits set.'''
 def find_it2(seq):
     odd = 0
     for num in seq:
@@ -32,8 +47,8 @@ class TestKataMethods(unittest.TestCase):
     def test_find_even_index(self,arr,solution,message = None):
         self.assertEqual(find_it(arr), solution, message)
 
-seq = [2,2,2,3,2,2,2]
-find_it2(seq)
+# seq = [2,2,2,3,2,2,2]
+# find_it2(seq)
 
 test_kata = TestKataMethods()
 test_kata.test_find_even_index(np.array([20,1,-1,2,-2,3,3,5,5,1,2,4,20,4,-1,-2,5]),5)
